@@ -30,7 +30,7 @@ url_options =
 
 module.exports = (robot) ->
   emailTime = null
-  sendEmail = (msg, from) ->
+  sendEmail = (msg) ->
     req = http.request(url_options, (res) ->
       console.log res.body('status')
       res.setEncoding "utf8"
@@ -45,5 +45,5 @@ module.exports = (robot) ->
     req.end()
 
   robot.respond /status (.*)/i, (msg) ->
-    sendEmail msg.match[1], msg.message.user.name
+    sendEmail msg.match[1]#, msg.message.user.name
     msg.reply "Status emailed: #{answer} (fuckyeah)"
