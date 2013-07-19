@@ -32,7 +32,7 @@ module.exports = (robot) ->
   emailTime = null
   sendEmail = (msg) ->
     req = http.request(url_options, (res) ->
-      console.log res.body('status')
+      console.log res.body
       res.setEncoding "utf8"
       res.on "data", (chunk) ->
         console.log chunk
