@@ -42,7 +42,9 @@ module.exports = (robot) ->
     req.end()
 
   robot.respond /status (.*)/i, (msg) ->
-    sendEmail msg.match[1], msg.message.user.name
+    console.log msg
+    console.log msg.message.user.name
+    sendEmail msg.match[1]#, msg.message.user.name
     msg.send "Status emailed: #{answer} (fuckyeah)"
     msg.send "#{Util.inspect(res.body)}"
     msg.send "#{Util.inspect(chunk)}"
