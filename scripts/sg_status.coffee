@@ -27,12 +27,13 @@ url_options =
   #agent: "Mandrill-Curl/1.0"
   headers: "Content-Type: application/json"
 
-
 module.exports = (robot) ->
   emailTime = null
   sendEmail = (msg, from) ->
+    console.log msg
+    console.log from
     req = http.request(url_options, (res) ->
-      #console.log res.body['status']
+      console.log util.inspect(res)
     )
     req.on "error", (e) ->
       console.log e.message
