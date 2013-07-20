@@ -31,10 +31,10 @@ url_options =
 module.exports = (robot) ->
   emailTime = null
   sendEmail = (msg, from) ->
-    console.log msg
-    console.log from
     req = http.request(url_options, (res) ->
-      console.log res.body['status']
+      console.log url_options
+      console.log res
+      #console.log res.body['status']
     )
     req.on "error", (e) ->
       answer = e.message
