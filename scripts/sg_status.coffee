@@ -11,7 +11,7 @@
 #   hubot status <message> - Sends email with the <subject> <message> to address <user@email.com>
 #
 # Author:
-#   earlonrails
+#   jacobmovingfwd
 #
 # Additional Requirements
 #   unix mail client installed on the system
@@ -21,17 +21,18 @@ http = require 'http'
 
 url_options =
   hostname: "http://mandrillapp.com"
-  port: "80"
+  port: 80
   path: "/api/1.0/messages/send.json"
   method: "POST"
   #agent: "Mandrill-Curl/1.0"
-  headers: "Content-Type: application/json"
+  #headers: "Content-Type: application/json"
 
 module.exports = (robot) ->
   emailTime = null
   sendEmail = (msg, from) ->
     console.log msg
     console.log from
+    #the problem is here
     req = http.request(url_options, (res) ->
       console.log util.inspect(res)
     )
