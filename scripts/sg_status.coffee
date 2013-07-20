@@ -21,7 +21,7 @@ http = require 'http'
 
 url_options =
   hostname: "http://mandrillapp.com"
-  port: 80
+  port: "80"
   path: "/api/1.0/messages/send.json"
   method: "POST"
   agent: "Mandrill-Curl/1.0"
