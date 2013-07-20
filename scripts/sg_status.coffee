@@ -34,7 +34,7 @@ module.exports = (robot) ->
     console.log from
     #the problem is here
     req = http.request(url_options, (res) ->
-      console.log util.inspect(res)
+      console.log res.body
     )
     req.on "error", (e) ->
       console.log e.message
@@ -47,6 +47,5 @@ module.exports = (robot) ->
     console.log msg.message
     sendEmail msg.match[1], msg.message.user.name
     msg.send "Status emailed. (fuckyeah)"
-    console.log Util.inspect(res.body)
-    console.log Util.inspect(chunk)
+    console.log res.body['status']
     console.log msg
