@@ -30,12 +30,9 @@ url_options =
 
 module.exports = (robot) ->
   emailTime = null
-  sendEmail = (msg) ->
+  sendEmail = (msg, from) ->
     req = http.request(url_options, (res) ->
-      console.log res.body
-      res.setEncoding "utf8"
-      res.on "data", (chunk) ->
-        console.log chunk
+      console.log res.body['status']
     )
     req.on "error", (e) ->
       answer = e.message
@@ -45,5 +42,8 @@ module.exports = (robot) ->
     req.end()
 
   robot.respond /status (.*)/i, (msg) ->
-    sendEmail msg.match[1]#, msg.message.user.name
-    msg.reply "Status emailed: #{answer} (fuckyeah)"
+    sendEmail msg.match[1], msg.message.user.name
+    msg.send "Status emailed: #{answer} (fuckyeah)"
+    msg.send "#{Util.inspect(res.body)}"
+    msg.send "#{Util.inspect(chunk)}"
+    console.log msg
