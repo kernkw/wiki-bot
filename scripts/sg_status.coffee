@@ -21,11 +21,11 @@ http = require 'http'
 
 url_options =
   hostname: "http://mandrillapp.com"
-  #port: 80
+  port: 80
   path: "/api/1.0/messages/send.json"
   method: "POST"
-  #agent: "Mandrill-Curl/1.0"
-  #headers: "Content-Type: application/json"
+  agent: "Mandrill-Curl/1.0"
+  headers: "Content-Type: application/json"
 
 
 module.exports = (robot) ->
@@ -44,7 +44,7 @@ module.exports = (robot) ->
   robot.respond /status (.*)/i, (msg) ->
     console.log msg.message
     sendEmail msg.match[1], msg.message.user.name
-    msg.send "Status emailed: #{answer} (fuckyeah)"
-    msg.send "#{Util.inspect(res.body)}"
-    msg.send "#{Util.inspect(chunk)}"
+    msg.send "Status emailed. (fuckyeah)"
+    console.log Util.inspect(res.body)
+    console.log Util.inspect(chunk)
     console.log msg
