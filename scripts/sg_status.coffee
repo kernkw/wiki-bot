@@ -21,19 +21,17 @@ http = require 'http'
 
 url_options =
   hostname: "http://mandrillapp.com"
-  port: 80
+  #port: 80
   path: "/api/1.0/messages/send.json"
   method: "POST"
-  agent: "Mandrill-Curl/1.0"
-  headers: "Content-Type: application/json"
+  #agent: "Mandrill-Curl/1.0"
+  #headers: "Content-Type: application/json"
 
 
 module.exports = (robot) ->
   emailTime = null
   sendEmail = (msg, from) ->
     req = http.request(url_options, (res) ->
-      console.log url_options
-      console.log res
       #console.log res.body['status']
     )
     req.on "error", (e) ->
