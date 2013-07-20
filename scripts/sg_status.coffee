@@ -34,7 +34,7 @@ module.exports = (robot) ->
     console.log from
     #the problem is here
     req = http.request(url_options, (res) ->
-      console.log res.body
+      console.log res.body['status']
     )
     req.on "error", (e) ->
       console.log e.message
