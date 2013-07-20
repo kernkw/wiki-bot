@@ -35,7 +35,7 @@ module.exports = (robot) ->
       #console.log res.body['status']
     )
     req.on "error", (e) ->
-      answer = e.message
+      console.log e.message
 
     # write data to request body
     req.write "{\"key\":\"uSaFDOmI1B8aSSoVTCaVRQ\",\"message\":{\"html\":\"<p><b>A Status Alert has been generated:</b></p><p>#{msg}</p><p>For details, please go to the HipChat Support room.</p>\",\"text\":\"A Status Alert has been generated:\n#{msg}\nFor details, please go to the HipChat Support room.\",\"subject\":\"Support Status Alert\",\"from_email\":\"alert@sendgrid.com\",\"from_name\":\"#{from}\",\"to\":[{\"email\":\"jacob@sendgrid.com\",\"name\":\"All_Support\"}],\"headers\":{\"Reply-To\":\"alert@sink.sendgrid.net\"}}\n"
