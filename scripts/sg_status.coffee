@@ -24,8 +24,8 @@ url_options =
   port: "80"
   path: "/api/1.0/messages/send.json"
   method: "POST"
-  #agent: "Mandrill-Curl/1.0"
-  headers: "Content-Type: application/json"
+  agent: "Mandrill-Curl/1.0"
+  #headers: "Content-Type: application/json"
 
 
 module.exports = (robot) ->
