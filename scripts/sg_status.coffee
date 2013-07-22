@@ -35,9 +35,7 @@ bkTransport = nodemailer.createTransport("SMTP",
     pass: "03jAc*b84"
 )
 
-module.exports = (robot) ->
-  emailTime = null
-  sendEmail = (msg, from) ->
+sendEmail = (msg, from) ->
     # setup e-mail data with unicode symbols
     mailOptions =
       from: "#{from} <alert@sendgrid.com>" # sender address
@@ -54,13 +52,15 @@ module.exports = (robot) ->
           if error
             console.log error
             msg.send "Backup error: " + error
-            msg.send "I have a million ideas, but, they all point to certain death. (okay)"
+            msg.send "Do you want me to sit in a corner and rust or just fall apart where I'm standing? (okay)"
           else
             console.log "Message sent on Backup: " + response.message
             msg.send "Message sent on Backup: " + response.message + "(fuckyeah)"
       else
         console.log "Message sent: " + response.message
-        msg.send "Message sent: " + response.message + "(fuckyeah)"
+        msg.send "Message sent: " + response.message
 
+module.exports = (robot) ->
+  emailTime = null
   robot.respond /status (.*)/i, (msg) ->
     sendEmail msg.match[1], msg.message.user.name
