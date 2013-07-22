@@ -35,14 +35,14 @@ bkTransport = nodemailer.createTransport("SMTP",
     pass: "03jAc*b84"
 )
 
-sendEmail = (msg, from) ->
+sendEmail = (text, from) ->
     # setup e-mail data with unicode symbols
     mailOptions =
       from: "#{from} <alert@sendgrid.com>" # sender address
       to: "jacob@sendgrid.com" # list of receivers
       subject: "SendGrid Status Alert" # Subject line
       generateTextFromHTML: true
-      html: "<p><b>A Status Alert has been generated:</b></p><p>#{msg}</p><p>For details, please go to the HipChat Support room.</p>" # html body
+      html: "<p><b>A Status Alert has been generated:</b></p><p>#{text}</p><p>For details, please go to the HipChat Support room.</p>" # html body
 
     sgTransport.sendMail mailOptions, (error, response) ->
       if error
