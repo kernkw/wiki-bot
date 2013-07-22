@@ -19,7 +19,7 @@
 util = require 'util'
 http = require 'http'
 
-url_options =
+options =
   hostname: "http://mandrillapp.com"
   port: 80
   path: "/api/1.0/messages/send.json"
