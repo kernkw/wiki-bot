@@ -51,14 +51,15 @@ module.exports = (robot) ->
     sgTransport.sendMail mailOptions, (error, response) ->
       if error
         console.log error
-        msg.send "SG Error: " + error
+        msg.send "SG Error: " + error.data
         sgTransport.close()
 
         bkTransport.sendMail mailOptions, (error, response) ->
           if error
             bkTransport.close()
             console.log error
-            msg.send "Backup error: " + error + " Do you want me to sit in a corner and rust or just fall apart where I'm standing? (foreveralone)"
+            msg.send "Backup error: " + error.data 
+            msg.send "Do you want me to sit in a corner and rust or just fall apart where I'm standing? (foreveralone)"
           else
             console.log "Message sent on Backup: " + response.message
             msg.send "Message sent on Backup: " + response.message
