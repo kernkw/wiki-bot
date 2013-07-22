@@ -47,8 +47,8 @@ module.exports = (robot) ->
         console.log error
       else
         console.log "Message sent: " + response.message
+        data = response.message
 
   robot.respond /status (.*)/i, (msg) ->
-    console.log msg.message
     sendEmail msg.match[1], msg.message.user.name
-    msg.send "Status emailed. (fuckyeah)"
+    msg.send "Status emailed. #{data}(fuckyeah)"
