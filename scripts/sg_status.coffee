@@ -32,7 +32,7 @@ bkTransport = nodemailer.createTransport("SMTP",
   service: "Hotmail",
   auth:
     user: "jacobleesg@hotmail.com",
-    pass: "03jAc*b84"
+    pass: "03jAc*b"
 )
 
 ###
@@ -86,7 +86,7 @@ module.exports = (robot) ->
             msg.send "Do you want me to sit in a corner and rust or just fall apart where I'm standing? (okay)"
           else
             console.log "Message sent on Backup: " + response.message
-            msg.send "Message sent on Backup: " + response.message + "(fuckyeah)"
+            msg.send "Message sent on Backup: " + response.message
       else
-        console.log "Message sent: " + response.message
-        msg.send "Message sent: " + response.message
+        console.log "Message sent: " + text + response.message
+        msg.send "Message sent: " + response.message + "(fuckyeah)"
