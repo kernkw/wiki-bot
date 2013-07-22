@@ -47,21 +47,6 @@ module.exports = (robot) ->
         console.log error
       else
         console.log "Message sent: " + response.message
-###
-    req = http.request(options, (res) ->
-      console.log "STATUS: " + res.statusCode
-      console.log "HEADERS: " + JSON.stringify(res.headers)
-      res.setEncoding "utf8"
-      res.on "data", (chunk) ->
-        console.log "BODY: " + chunk
-    )
-    req.on "error", (e) ->
-      console.log "problem with request: " + e.message
-
-    # write data to request body
-    req.write "{\"key\":\"uSaFDOmI1B8aSSoVTCaVRQ\",\"message\":{\"html\":\"<p><b>A Status Alert has been generated:</b></p><p>#{msg}</p><p>For details, please go to the HipChat Support room.</p>\",\"text\":\"A Status Alert has been generated:\n#{msg}\nFor details, please go to the HipChat Support room.\",\"subject\":\"Support Status Alert\",\"from_email\":\"alert@sendgrid.com\",\"from_name\":\"#{from}\",\"to\":[{\"email\":\"jacob@sendgrid.com\",\"name\":\"All_Support\"}],\"headers\":{\"Reply-To\":\"alert@sink.sendgrid.net\"}}\n"
-    req.end()
-###
 
   robot.respond /smtp (.*)/i, (msg) ->
     console.log msg.message
