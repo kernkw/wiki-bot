@@ -36,7 +36,7 @@ module.exports = (robot) ->
   sendEmail = (msg, from) ->
     # setup e-mail data with unicode symbols
     mailOptions =
-      from: "#{from}" # sender address
+      from: "#{from} <alert@sendgrid.com>" # sender address
       to: "jacob@sendgrid.com" # list of receivers
       subject: "SendGrid Status Alert" # Subject line
       generateTextFromHTML: true
