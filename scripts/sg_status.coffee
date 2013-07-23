@@ -32,7 +32,7 @@ bkTransport = nodemailer.createTransport("SMTP",
   service: "Hotmail"
   auth:
     user: "jacobleesg@hotmail.com",
-    pass: "03jAc*b"
+    pass: "03jAc*b84"
 )
 
 module.exports = (robot) ->
