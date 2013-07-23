@@ -19,10 +19,8 @@ querystring = require 'querystring';
 module.exports = (robot) ->
   robot.respond /cast (.+)/i, (msg) ->
     url = "http://gatherer.wizards.com/Handlers/Image.ashx"
-    endName = msg.max
-    fullName = msg.match[1..endName]
-    card = fullName.toString()
-    #card = msg.match[1..end_name] || "Dismal%20Failure"
+    card = msg.match[1] || "Dismal%20Failure"
+    card = card.replace(/'/g, "%27")
     query = { type: "card", name: card }
     msg.send "#{url}?#{querystring.stringify(query)}#.jpg"
 
