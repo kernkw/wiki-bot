@@ -20,9 +20,11 @@ module.exports = (robot) ->
   robot.respond /cast (.+)/i, (msg) ->
     url = "http://gatherer.wizards.com/Handlers/Image.ashx"
     card = msg.match[1] || "Dismal%20Failure"
-    card = card.replace(/'/g, "%27")
     query = { type: "card", name: card }
-    msg.send "#{url}?#{querystring.stringify(query)}#.jpg"
+    query = querystring.stringify(query)
+    query = query.replace(/'/g, "%27")
+    
+    msg.send "#{url}?#{query}#.jpg"
 
   robot.respond /price (.+)/i, (msg) ->
     card_name = msg.match[1]
