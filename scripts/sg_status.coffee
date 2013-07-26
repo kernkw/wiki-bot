@@ -43,10 +43,10 @@ module.exports = (robot) ->
     from = msg.message.user.name
     mailOptions =
       from: "#{from} <alert@sendgrid.com>" # sender address
-      to: "jacob@sendgrid.com" # list of receivers
-      subject: "SendGrid Status Alert" # Subject line
+      to: "jacob@sendgrid.com, ken@sendgrid.com, kyle.kern@sendgrid.com" # list of receivers
+      subject: "New Alert in 411 Room" # Subject line
       generateTextFromHTML: true
-      html: "<p><b>A Status Alert has been generated:</b></p><p>#{text}</p><p>For details, please go to the HipChat Support room.</p>" # html body
+      html: "<p><b>A Status Alert has been generated:</b></p><p>#{text}</p><p>For details, please go to the HipChat 411 room.</p>" # html body
 
     sgTransport.sendMail mailOptions, (error, response) ->
       if error
@@ -64,5 +64,6 @@ module.exports = (robot) ->
             console.log "Message sent on Backup: " + response.message
             msg.send "Message sent on Backup: " + response.message
       else
+        msg.send "@all Status: " + text
         console.log "Message sent: " + text + response.message
         msg.send "Message sent: " + response.message + "(fuckyeah)"
