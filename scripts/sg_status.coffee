@@ -46,7 +46,7 @@ module.exports = (robot) ->
       to: "jacob@sendgrid.com, ken@sendgrid.com, kyle.kern@sendgrid.com" # list of receivers
       subject: "New Alert in 411 Room" # Subject line
       generateTextFromHTML: true
-      html: "<p><b>This email has been generated to notify you that Support has issued a customer facing post and tweet.      For more detailed Support or Operational communications please follow this issue in the 411 HipChat room where we can provide updates. Here’s the 411:</b></p><p>#{text}</p><p>Please keep the 411 HipChat room open for future updates.</p>" # html body
+      html: "<p><b>This email has been generated to notify you that Support has issued a customer facing post and tweet. <br>For more detailed Support or Operational communications please follow this issue in the 411 HipChat room where we can provide updates.<br>Here’s the 411:</p></b></p><p>#{text}</p><p><i>Please keep the 411 HipChat room open for future updates.</i></p>" # html body
 
     sgTransport.sendMail mailOptions, (error, response) ->
       if error
